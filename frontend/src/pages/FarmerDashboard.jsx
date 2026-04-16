@@ -22,7 +22,7 @@ const FarmerDashboard = () => {
 
   const fetchWorkers = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/workers', { params: search });
+      const { data } = await axios.get('https://agriculture-worker-booking-1.onrender.com/api/workers', { params: search });
       setWorkers(data);
     } catch (err) {
       console.error(err);
@@ -32,7 +32,7 @@ const FarmerDashboard = () => {
   const fetchBookings = async (farmerId) => {
     try {
       const token = localStorage.getItem('token');
-      const { data } = await axios.get(`http://localhost:5000/api/bookings/farmer/${farmerId}`, {
+      const { data } = await axios.get(`https://agriculture-worker-booking-1.onrender.com/api/bookings/farmer/${farmerId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookings(data);
@@ -50,7 +50,7 @@ const FarmerDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/bookings', {
+      await axios.post('https://agriculture-worker-booking-1.onrender.com/api/bookings', {
         workerId: selectedWorker.userId._id,
         workType: bookingForm.workType,
         date: bookingForm.date,
@@ -71,7 +71,7 @@ const FarmerDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/ratings', {
+      await axios.post('https://agriculture-worker-booking-1.onrender.com/api/ratings', {
         workerId: ratingModal.workerId._id || ratingModal.workerId,
         bookingId: ratingModal._id,
         rating: Number(ratingForm.rating),

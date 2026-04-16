@@ -13,7 +13,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', formData);
+      await axios.post('https://agriculture-worker-booking-1.onrender.com/api/register', formData);
       navigate('/login');
     } catch (err) {
       console.error("Registration error:", err);

@@ -21,7 +21,7 @@ const WorkerDashboard = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem('token');
-      const { data } = await axios.get(`http://localhost:5000/api/workers/me`, {
+      const { data } = await axios.get(`https://agriculture-worker-booking-1.onrender.com/api/workers/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (data) {
@@ -41,7 +41,7 @@ const WorkerDashboard = () => {
   const fetchBookings = async (workerId) => {
     try {
       const token = localStorage.getItem('token');
-      const { data } = await axios.get(`http://localhost:5000/api/bookings/worker/${workerId}`, {
+      const { data } = await axios.get(`https://agriculture-worker-booking-1.onrender.com/api/bookings/worker/${workerId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookings(data);
@@ -62,11 +62,11 @@ const WorkerDashboard = () => {
       };
 
       if (profile) {
-        await axios.put('http://localhost:5000/api/workers/update', payload, {
+        await axios.put('https://agriculture-worker-booking-1.onrender.com/api/workers/update', payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5000/api/workers/profile', payload, {
+        await axios.post('https://agriculture-worker-booking-1.onrender.com/api/workers/profile', payload, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -80,7 +80,7 @@ const WorkerDashboard = () => {
   const updateBookingStatus = async (id, status) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/bookings/${id}/status`, { status }, {
+      await axios.put(`https://agriculture-worker-booking-1.onrender.com/api/bookings/${id}/status`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchBookings(user._id);
